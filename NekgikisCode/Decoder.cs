@@ -9,7 +9,7 @@ namespace NekgikisCode
 {
     public class Decoder
     {
-        public string cleanString(string sentence)
+        public string CleanString(string sentence)
         {
             Console.WriteLine("Original sentence --> " + sentence);
             var noAccents = Regex.Replace(sentence.Normalize(NormalizationForm.FormD), @"[^a-zA-z0-9. ]+", "");
@@ -28,6 +28,22 @@ namespace NekgikisCode
             dictionary = Enumerable.Range(0, numList.Count).ToDictionary(x => numList[x], x => sentenceChars[x]);
             
             return dictionary;
-        }           
+        }
+        
+        public string GenerateURL(Dictionary<int, char> dictionary)
+        {
+            var url = "";
+
+            for (int i = 0; i < dictionary.Count; i++)
+            {
+                if (dictionary.ContainsKey(i))
+                {
+                    url += dictionary[i];
+                }
+            }
+
+            Console.WriteLine("URL decoded --> " + url);
+            return url;
+        }
     }
 }
