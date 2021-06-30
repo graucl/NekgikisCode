@@ -14,6 +14,7 @@ namespace NekgikisCode
         {
             var decoder = new Decoder();
             var cleanSentence = decoder.cleanString(labelMessage.Text);
+            var dictionary = decoder.BuildDictionary(labelNumbers.Text, cleanSentence);
         }
     }
 }
