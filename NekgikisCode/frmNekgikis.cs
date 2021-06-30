@@ -18,6 +18,17 @@ namespace NekgikisCode
             var url = decoder.GenerateURL(dictionary);
 
             MessageBox.Show("Message decoded!\nThe URL is:\n" + url);
+
+            var ok = decoder.ConnectionTestURL(url);
+
+            if (ok == true)
+            {
+                MessageBox.Show("La URL és correcta");
+            }
+            else
+            {
+                MessageBox.Show("La URL és incorrecta");
+            }
         }
     }
 }

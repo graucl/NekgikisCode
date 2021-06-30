@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -44,6 +45,33 @@ namespace NekgikisCode
 
             Console.WriteLine("URL decoded --> " + url);
             return url;
+        }
+
+        public bool ConnectionTestURL(string url)
+        {
+            WebRequest request;
+            HttpWebResponse response;
+            try
+            {
+                if (url != null)
+                {
+                    request = WebRequest.Create("https://" + url);
+                    response = (HttpWebResponse)request.GetResponse();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (WebException ex)
+            {
+                if (ex.Status == WebExceptionStatus.ProtocolError)
+                {
+                    return true;
+                }
+                return false;
+            }
         }
     }
 }
