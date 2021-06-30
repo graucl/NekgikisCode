@@ -4,7 +4,6 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace NekgikisCode
 {
@@ -27,7 +26,7 @@ namespace NekgikisCode
             var numList = numbers.Split(',').Select(Int32.Parse).ToList();
             List<char> sentenceChars = sentence.ToList();
             dictionary = Enumerable.Range(0, numList.Count).ToDictionary(x => numList[x], x => sentenceChars[x]);
-            
+
             return dictionary;
         }
         
