@@ -18,5 +18,16 @@ namespace NekgikisCode
 
             return result;
         }
+
+        public Dictionary<int, char> BuildDictionary(string numbers, string sentence)
+        {
+            var dictionary = new Dictionary<int, char>();
+            numbers = numbers.Replace(" ", "");
+            var numList = numbers.Split(',').Select(Int32.Parse).ToList();
+            List<char> sentenceChars = sentence.ToList();
+            dictionary = Enumerable.Range(0, numList.Count).ToDictionary(x => numList[x], x => sentenceChars[x]);
+            
+            return dictionary;
+        }           
     }
 }
